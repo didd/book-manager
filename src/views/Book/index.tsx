@@ -16,7 +16,7 @@ export function AddBookForm({ showDescription }: Props) {
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <Input
             id="title"
-            label="Book title"
+            label="Book title *"
             placeholder="Book title"
             value={value}
             onChange={onChange}
@@ -155,11 +155,12 @@ export function AddBookForm({ showDescription }: Props) {
       {showDescription && (
         <Controller
           name="description"
+          rules={{ required: "Description is required" }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <Input
               id="description"
               as="textarea"
-              label="Description"
+              label="Description *"
               placeholder="description"
               value={value}
               onChange={onChange}
