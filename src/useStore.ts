@@ -25,6 +25,15 @@ export const useStore = create<BookManagerState>((set) => ({
     name: SubGenre["name"],
     isDescriptionRequired: boolean
   ) => {
+    console.log(
+      "The add sub genre API is sending",
+      "genre Id of",
+      genreId,
+      "sub genre name of",
+      name,
+      "and whether a description is required or not",
+      isDescriptionRequired
+    );
     let lastSubGenreId: number | null = null;
     set((state) => {
       const lastGenre = state.genres[state.genres.length];
@@ -55,6 +64,15 @@ export const useStore = create<BookManagerState>((set) => ({
   },
   addBook: (genreId: Genre["id"], subGenreId: SubGenre["id"], book: Book) => {
     set((state) => {
+      console.log(
+        "The add book API is sending",
+        "genre Id of",
+        genreId,
+        "sub genre ID of",
+        subGenreId,
+        "and book detail",
+        book
+      );
       return {
         genres: state.genres.map((genre) => {
           if (genre.id === genreId) {
