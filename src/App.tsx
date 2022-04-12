@@ -73,11 +73,15 @@ function App() {
   const onSubmit = bookForm.handleSubmit((data) => {
     const subGenre = subgenreForm.getValues();
     if (currentGenre) {
-      const subGenreId = addSubGenre(
-        currentGenre.id,
-        subGenre.name,
-        subGenre.isDescriptionRequired
-      );
+      const subGenreId =
+        currentSubGenre && typeof currentSubGenre === "object"
+          ? currentSubGenre.id
+          : addSubGenre(
+              currentGenre.id,
+              subGenre.name,
+              subGenre.isDescriptionRequired
+            );
+
       if (subGenreId) {
         addBook(currentGenre.id, subGenreId, data);
         setSuccessMessage("Book added successfully");
